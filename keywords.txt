@@ -1,0 +1,28 @@
+#######################################
+# Syntax Coloring Map For Utilities
+# Created by Sachi Gerlitz, 25-XII-2024 ver 1.2.0
+#######################################
+#######################################
+#######################################
+# Library (KEYWORD3)
+#######################################
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+Utilities   KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+begin   KEYWORD2
+InfoStamp    KEYWORD2
+LedIndicator  KEYWORD2
+Print4FreeHeap  KEYWORD2
+ProgMem_Len  KEYWORD2
+UtCheckSum  KEYWORD2
+UtCheckSum16  KEYWORD2
+TimestampToString KEYWORD2
+FbufInt KEYWORD2
+PrintEmailBuf KEYWORD2
+waitForUserInput KEYWORD2
+ESPmemUsage KEYWORD2
+PrintIamAlive KEYWORD2
