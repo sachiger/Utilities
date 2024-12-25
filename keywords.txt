@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #######################################
 # Syntax Coloring Map For Utilities
 # Created by Sachi Gerlitz, 25-XII-2024 ver 1.2.0
@@ -13,6 +14,9 @@ Utilities   KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
+=======
+Utilities   KEYWORD1
+>>>>>>> c59422afedc2f80c7e2573d8867e1fbf713db102
 begin   KEYWORD2
 InfoStamp    KEYWORD2
 LedIndicator  KEYWORD2
@@ -24,5 +28,9 @@ TimestampToString KEYWORD2
 FbufInt KEYWORD2
 PrintEmailBuf KEYWORD2
 waitForUserInput KEYWORD2
+<<<<<<< HEAD
 ESPmemUsage KEYWORD2
 PrintIamAlive KEYWORD2
+=======
+
+>>>>>>> c59422afedc2f80c7e2573d8867e1fbf713db102

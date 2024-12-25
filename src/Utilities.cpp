@@ -1,6 +1,7 @@
 /*
  * Utilities.cpp library for utility methods for IoT applications
  * Created by Sachi Gerlitz
+<<<<<<< HEAD
  * 
  * constructor:   Utilities
  * methods:       begin; InfoStamp; LedIndicator; Print4FreeHeap; ProgMem_Len;
@@ -12,6 +13,15 @@
  * 25-VIII-2024 ver 1     [<InfoStamp> parameters]
  * 12-VI-2024 ver 0
  *
+=======
+ * 08-IX-2024 ver 1.1 [<ESPmemUsage>]
+ * 25-VIII-2024 ver 1 [<InfoStamp> parameters]
+ * 12-VI-2024 ver 0
+ *
+ * constructor:   Utilities
+ * methods:       begin; InfoStamp; LedIndicator; Print4FreeHeap; ProgMem_Len;
+ *                UtCheckSum; UtCheckSum16; TimestampToString; (FbufTime); FbufInt; PrintEmailBuf; waitForUserInput; ESPmemUsage;
+>>>>>>> c59422afedc2f80c7e2573d8867e1fbf713db102
  */
 #include  "Arduino.h"
 //#include  "avr/pgmspace.h"
@@ -244,6 +254,7 @@ void  Utilities::ESPmemUsage(TimePack C, const char* Mname, const char* msg){
   Serial.print(L2); Serial.print(ESP.getMaxFreeBlockSize()); Serial.print(F(" ")); Serial.print(msg); Serial.print(F(" -END\n"));
 } // end of ESPmemUsage
 
+<<<<<<< HEAD
 //*********************************************************************************/
 void  Utilities::PrintIamAlive(TimePack C,bool activate){
     /*
@@ -272,4 +283,6 @@ const   char* Utilities::getVersion() {
     return  UtilitiesVersion;
 }   // end of getVersion
 
+=======
+>>>>>>> c59422afedc2f80c7e2573d8867e1fbf713db102
 //****************************************************************************************/
