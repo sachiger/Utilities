@@ -5,8 +5,9 @@
  * constructor:   Utilities
  * methods:       begin; InfoStamp; LedIndicator; Print4FreeHeap; ProgMem_Len;
  *                UtCheckSum; UtCheckSum16; TimestampToString; (FbufTime); FbufInt; PrintEmailBuf; waitForUserInput; 
- *                ESPmemUsage; PrintIamAlive; getVersion;
+ *                ESPmemUsage; PrintIamAlive; uint16ToChars; getVersion;
  * 
+ * 02-I-2025    ver 1.3   [add <uint16ToChars>]
  * 25-XII-2024  ver 1.2   [add <PrintIamAlive>]
  * 08-IX-2024   ver 1.1   [<ESPmemUsage>]
  * 25-VIII-2024 ver 1     [<InfoStamp> parameters]
@@ -263,6 +264,37 @@ void  Utilities::PrintIamAlive(TimePack C,bool activate){
         if ( C.hourEdge ) InfoStamp(C,Mname,L2,0,1);
     }   // end of minute edge
 }   // end of PrintIamAlive
+
+// **************************************************************************************** //
+    char* Utilities::uint16ToChars(uint16_t value, char *buffer, size_t bufferSize) {
+      /*
+       * method to convert int number into char buffer
+       * alternative:
+       * #include <cstdio> // For snprintf
+       * snprintf(buffer, bufferSize, "%u", value); // Converts the number to a null-terminated string
+       */
+        size_t i = 0;
+        if (bufferSize < 2) {
+            buffer[0] = '\0';                                 // Not enough space
+            return  buffer;
+        }
+
+        do {
+            if (i < bufferSize - 1) {                         // Ensure there's space for null terminator
+                buffer[i++] = (value % 10) + '0';             // Convert digit to char
+            }
+            value /= 10;
+        } while (value > 0);
+
+        buffer[i] = '\0';                                     // Null-terminate
+
+        for (size_t j = 0; j < i / 2; ++j) {                  // Reverse the string
+            char temp = buffer[j];
+            buffer[j] = buffer[i - j - 1];
+            buffer[i - j - 1] = temp;
+        }
+        return  buffer;
+    }   // end of uint16ToChars
 
 // ****************************************************************************************/
 const   char* Utilities::getVersion() {

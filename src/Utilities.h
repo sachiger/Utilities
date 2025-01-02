@@ -5,8 +5,9 @@
  * constructor:   Utilities
  * methods:       begin; InfoStamp; LedIndicator; Print4FreeHeap; ProgMem_Len;
  *                UtCheckSum; UtCheckSum16; TimestampToString; (FbufTime); FbufInt; PrintEmailBuf; waitForUserInput; 
- *                ESPmemUsage; PrintIamAlive; getVersion;
+ *                ESPmemUsage; PrintIamAlive; uint16ToChars; getVersion;
  * 
+ * 02-I-2025    ver 1.3   [add <uint16ToChars>]
  * 25-XII-2024  ver 1.2   [add <ESPmemUsage>]
  * 08-IX-2024   ver 1.1   [<ESPmemUsage>]
  * 25-VIII-2024 ver 1     [<InfoStamp> parameters]
@@ -37,6 +38,7 @@
       char* waitForUserInput(TimePack C, char* buffer=nullptr, const char* msg=nullptr);
       void  ESPmemUsage(TimePack C, const char* Mname, const char* msg);
       void  PrintIamAlive(TimePack C,bool activate);
+      char* uint16ToChars(uint16_t value, char *buffer, size_t bufferSize);
       const char* getVersion();
     private:
       TimePack  _LT;
