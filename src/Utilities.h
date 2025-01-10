@@ -7,6 +7,7 @@
  *                UtCheckSum; UtCheckSum16; TimestampToString; (FbufTime); FbufInt; PrintEmailBuf; waitForUserInput; 
  *                ESPmemUsage; PrintIamAlive; uint16ToChars; getVersion;
  * 
+ * 10-I-2025    ver 1.4   [Clock.h dependecy]
  * 02-I-2025    ver 1.3   [add <uint16ToChars>]
  * 25-XII-2024  ver 1.2   [add <ESPmemUsage>]
  * 08-IX-2024   ver 1.1   [<ESPmemUsage>]
@@ -19,6 +20,7 @@
   #ifndef UtilitiesVersion
     #define   UtilitiesVersion  "1.2.x"
   #endif  //UtilitiesVersion
+  #include  "Clock.h"
   #include  "Arduino.h"
 
   class Utilities 
