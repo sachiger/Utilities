@@ -1,6 +1,6 @@
 {
     "name": "Utilities",
-    "version": "1.2.4",
+    "version": "1.2.5",
     "description": "Various utilities and tool for Arduino IoT applications",
     "keywords": "example, platformio, library",
     "repository": {
@@ -18,7 +18,7 @@
     "platforms": ["espressif8266"],
     "build": {
         "flags": [
-          "-D UtilitiesVersion=\\\"1.2.4\\\""
+          "-D UtilitiesVersion=\\\"1.2.5\\\""
         ]
       }
   }

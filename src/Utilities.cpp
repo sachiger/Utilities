@@ -7,6 +7,7 @@
  *                UtCheckSum; UtCheckSum16; TimestampToString; (FbufTime); FbufInt; PrintEmailBuf; waitForUserInput; 
  *                ESPmemUsage; PrintIamAlive; uint16ToChars; getVersion;
  * 
+ * 14-I-2025    ver 1.4   [correct <uint16ToChars>]
  * 02-I-2025    ver 1.3   [add <uint16ToChars>]
  * 25-XII-2024  ver 1.2   [add <PrintIamAlive>]
  * 08-IX-2024   ver 1.1   [<ESPmemUsage>]
@@ -273,21 +274,17 @@ void  Utilities::PrintIamAlive(TimePack C,bool activate){
        * #include <cstdio> // For snprintf
        * snprintf(buffer, bufferSize, "%u", value); // Converts the number to a null-terminated string
        */
+        uint16_t  _value = value;
         size_t i = 0;
-        if (bufferSize < 2) {
-            buffer[0] = '\0';                                 // Not enough space
-            return  buffer;
-        }
-
+        buffer[0] = 0x00;
+        if (bufferSize < 2) return  buffer;                   // Not enough space
         do {
             if (i < bufferSize - 1) {                         // Ensure there's space for null terminator
-                buffer[i++] = (value % 10) + '0';             // Convert digit to char
+                buffer[i++] = (_value % 10) + '0';            // Convert digit to char
             }
-            value /= 10;
-        } while (value > 0);
-
-        buffer[i] = '\0';                                     // Null-terminate
-
+            _value /= 10;
+        } while (_value > 0);
+        buffer[i] = 0x00;                                     // Null-terminate
         for (size_t j = 0; j < i / 2; ++j) {                  // Reverse the string
             char temp = buffer[j];
             buffer[j] = buffer[i - j - 1];
