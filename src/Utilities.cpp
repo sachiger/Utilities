@@ -7,8 +7,8 @@
  *                UtCheckSum; UtCheckSum16; TimestampToString; (FbufTime); FbufInt; PrintEmailBuf; waitForUserInput; 
  *                ESPmemUsage; PrintIamAlive; uint16ToChars; getVersion;
  * 
- * 31-I-2025    ver 1.6   [parse '&emsp;']
- * 14-I-2025    ver 1.4   [correct <uint16ToChars>] 
+ * 31-I-2025    ver 2.6   [parse '&emsp;']
+ * 14-I-2025    ver 2.4   [correct <uint16ToChars>] 
  * 02-I-2025    ver 1.3   [add <uint16ToChars>]
  * 25-XII-2024  ver 1.2   [add <PrintIamAlive>]
  * 08-IX-2024   ver 1.1   [<ESPmemUsage>]
