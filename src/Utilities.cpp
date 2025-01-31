@@ -200,18 +200,16 @@ void  Utilities::PrintEmailBuf(char*  buf){
   char* ptr;
   ptr=buf;
   Serial.print(F("\n\t"));
-  while ( *ptr!=0x00 ) {                          // end of buffer check
-                                                  // <br> check
-    if ( *ptr=='<' && ( *(ptr+1)=='b' || *(ptr+1)=='B') && (*(ptr+2)=='r' || *(ptr+2)=='R') && *(ptr+3)=='>' ) {
+  while ( *ptr!=0x00 ) {                                      // end of buffer check
+    if                                                        // <br> check
+      ( *ptr=='<' && ( *(ptr+1)=='b' || *(ptr+1)=='B') && (*(ptr+2)=='r' || *(ptr+2)=='R') && *(ptr+3)=='>' ) {
       Serial.print(F("\n\t"));
-      ptr+=4;
-    }
-                                                  // &emsp; check
-    if  ( *ptr=='&' && *(ptr+1)=='e' && *(ptr+2)=='m' && *(ptr+3)=='s'  && *(ptr+4)=='p'  && *(ptr+5)==';' ) {
+      for (uint8_t ii=0;ii<3;ii++) ptr++;                     // repoint while enabling the while() (replace 4 chars by 2)
+    } else if                                                 // &emsp; check
+      ( *ptr=='&' && *(ptr+1)=='e' && *(ptr+2)=='m' && *(ptr+3)=='s'  && *(ptr+4)=='p'  && *(ptr+5)==';' ) {
       Serial.print(F("\t"));
-      ptr+=5;
-    }
-    else Serial.print(*ptr);
+      for (uint8_t ii=0;ii<5;ii++) ptr++;                     // repoint while enabling the while() (replace 5 chars by 1)
+    } else Serial.print(*ptr);
     ptr++;
   }
 }     // end of PrintEmailBuf
