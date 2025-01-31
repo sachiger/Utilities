@@ -7,7 +7,8 @@
  *                UtCheckSum; UtCheckSum16; TimestampToString; (FbufTime); FbufInt; PrintEmailBuf; waitForUserInput; 
  *                ESPmemUsage; PrintIamAlive; uint16ToChars; getVersion;
  * 
- * 14-I-2025    ver 1.4   [correct <uint16ToChars>]
+ * 31-I-2025    ver 1.6   [parse '&emsp;']
+ * 14-I-2025    ver 1.4   [correct <uint16ToChars>] 
  * 02-I-2025    ver 1.3   [add <uint16ToChars>]
  * 25-XII-2024  ver 1.2   [add <PrintIamAlive>]
  * 08-IX-2024   ver 1.1   [<ESPmemUsage>]
@@ -192,15 +193,23 @@ char*  Utilities::FbufInt(uint16_t number, char* buf){
 //****************************************************************************************/
 void  Utilities::PrintEmailBuf(char*  buf){
   /*
-   * method to parse a buffer <buf> and print. Replace <BR> with NL
+   * method to parse a buffer <buf> and print. 
+   *  - Replace <BR> with NL
+   *  - Replace &emsp; with TAB
    */
   char* ptr;
   ptr=buf;
   Serial.print(F("\n\t"));
-  while ( *ptr!=0x00 ) {          // end of buffer check
-    if ( *ptr=='<' && *(ptr+1)=='b' && *(ptr+2)=='r' && *(ptr+3)=='>' ) {
+  while ( *ptr!=0x00 ) {                          // end of buffer check
+                                                  // <br> check
+    if ( *ptr=='<' && ( *(ptr+1)=='b' || *(ptr+1)=='B') && (*(ptr+2)=='r' || *(ptr+2)=='R') && *(ptr+3)=='>' ) {
       Serial.print(F("\n\t"));
-      ptr+=3;
+      ptr+=4;
+    }
+                                                  // &emsp; check
+    if  ( *ptr=='&' && *(ptr+1)=='e' && *(ptr+2)=='m' && *(ptr+3)=='s'  && *(ptr+4)=='p'  && *(ptr+5)==';' ) {
+      Serial.print(F("\t"));
+      ptr+=5;
     }
     else Serial.print(*ptr);
     ptr++;
