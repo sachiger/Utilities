@@ -5,8 +5,9 @@
  * constructor:   Utilities
  * methods:       begin; InfoStamp; LedIndicator; Print4FreeHeap; ProgMem_Len;
  *                UtCheckSum; UtCheckSum16; TimestampToString; (FbufTime); FbufInt; PrintEmailBuf; waitForUserInput; 
- *                ESPmemUsage; PrintIamAlive; uint16ToChars; getVersion;
+ *                ESPmemUsage; PrintIamAlive; uint16ToChars; String2Bool; getVersion;
  * 
+ * 16-II-2025   ver 2.7   [String2Bool]
  * 31-I-2025    ver 2.6   [parse '&emsp;']
  * 14-I-2025    ver 2.4   [correct <uint16ToChars>] 
  * 02-I-2025    ver 1.3   [add <uint16ToChars>]
@@ -274,31 +275,40 @@ void  Utilities::PrintIamAlive(TimePack C,bool activate){
 }   // end of PrintIamAlive
 
 // **************************************************************************************** //
-    char* Utilities::uint16ToChars(uint16_t value, char *buffer, size_t bufferSize) {
-      /*
-       * method to convert int number into char buffer
-       * alternative:
-       * #include <cstdio> // For snprintf
-       * snprintf(buffer, bufferSize, "%u", value); // Converts the number to a null-terminated string
-       */
-        uint16_t  _value = value;
-        size_t i = 0;
-        buffer[0] = 0x00;
-        if (bufferSize < 2) return  buffer;                   // Not enough space
-        do {
-            if (i < bufferSize - 1) {                         // Ensure there's space for null terminator
-                buffer[i++] = (_value % 10) + '0';            // Convert digit to char
-            }
-            _value /= 10;
-        } while (_value > 0);
-        buffer[i] = 0x00;                                     // Null-terminate
-        for (size_t j = 0; j < i / 2; ++j) {                  // Reverse the string
-            char temp = buffer[j];
-            buffer[j] = buffer[i - j - 1];
-            buffer[i - j - 1] = temp;
+char* Utilities::uint16ToChars(uint16_t value, char *buffer, size_t bufferSize) {
+  /*
+    * method to convert int number into char buffer
+    * alternative:
+    * #include <cstdio> // For snprintf
+    * snprintf(buffer, bufferSize, "%u", value); // Converts the number to a null-terminated string
+    */
+    uint16_t  _value = value;
+    size_t i = 0;
+    buffer[0] = 0x00;
+    if (bufferSize < 2) return  buffer;                   // Not enough space
+    do {
+        if (i < bufferSize - 1) {                         // Ensure there's space for null terminator
+            buffer[i++] = (_value % 10) + '0';            // Convert digit to char
         }
-        return  buffer;
-    }   // end of uint16ToChars
+        _value /= 10;
+    } while (_value > 0);
+    buffer[i] = 0x00;                                     // Null-terminate
+    for (size_t j = 0; j < i / 2; ++j) {                  // Reverse the string
+        char temp = buffer[j];
+        buffer[j] = buffer[i - j - 1];
+        buffer[i - j - 1] = temp;
+    }
+    return  buffer;
+}   // end of uint16ToChars
+
+//****************************************************************************************/
+bool Utilities::String2Bool(char* str){
+  /*
+   * method to convert string to boolean
+   */
+  if (strncmp(str, "\"true\"", 4) == 0) return true;
+  else return false;
+}   // end of String2Bool
 
 // ****************************************************************************************/
 const   char* Utilities::getVersion() {

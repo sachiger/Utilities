@@ -1,6 +1,6 @@
 #######################################
 # Syntax Coloring Map For Utilities
-# Created by Sachi Gerlitz, 02-I-2025 ver 1.2.2
+# Created by Sachi Gerlitz, 16-III-2025 ver 1.2.7
 #######################################
 #######################################
 #######################################
@@ -27,4 +27,5 @@ waitForUserInput KEYWORD2
 ESPmemUsage KEYWORD2
 PrintIamAlive KEYWORD2
 uint16ToChars KEYWORD2
+String2Bool KEYWORD2
 getVersion KEYWORD2
